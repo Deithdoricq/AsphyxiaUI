@@ -254,7 +254,7 @@ local function Shared(self, unit)
 			FlashInfo:SetScript("OnUpdate", T.UpdateManaLevel)
 			FlashInfo.parent = self
 			FlashInfo:SetAllPoints(panel)
-			FlashInfo.ManaLevel = T.SetFontString(FlashInfo, font1, 12)
+			FlashInfo.ManaLevel = T.SetFontString(FlashInfo, font, 10)
 			FlashInfo.ManaLevel:SetPoint("CENTER", panel, "CENTER", 0, 0)
 			self.FlashInfo = FlashInfo
 			
@@ -268,13 +268,12 @@ local function Shared(self, unit)
 			self:Tag(status, "[pvp]")
 			--]]
 			
-			-- pvp status text
-			local status = T.SetFontString(panel, font1, 12)
-			status:SetPoint("CENTER", panel, "CENTER", 0, 0)
-			status:SetTextColor(0.69, 0.31, 0.31)
-			status:Hide()
-			self.Status = status
-			self:Tag(status, "[pvp]")
+			-- pvp status icon
+			local PVP = health:CreateTexture(nil, "OVERLAY")
+			PVP:SetHeight(T.Scale(32))
+			PVP:SetWidth(T.Scale(32))
+			PVP:SetPoint("CENTER", T.Scale(5), T.Scale(-6))
+			self.PvP = PVP
 			
 			-- leader icon
 			local Leader = InvFrame:CreateTexture(nil, "OVERLAY")
@@ -708,12 +707,12 @@ local function Shared(self, unit)
 
 			castbar.time = T.SetFontString(castbar,font, 10, "THINOUTLINE")
 			castbar.time:Point("RIGHT", castbar.bg, "RIGHT", -4, 0)
-			castbar.time:SetTextColor(1, 1, 1)
+			castbar.time:SetTextColor(0, 4, 0)
 			castbar.time:SetJustifyH("RIGHT")
 
 			castbar.Text = T.SetFontString(castbar,font, 10, "THINOUTLINE")
 			castbar.Text:Point("LEFT", castbar.bg, "LEFT", 4, 0)
-			castbar.Text:SetTextColor(1, 1, 1)
+			castbar.Text:SetTextColor(0.3, 0.2, 1)
 			
 			if C["unitframes"].cbicons == true then
 				castbar.button = CreateFrame("Frame", nil, castbar)
@@ -1153,7 +1152,7 @@ local function Shared(self, unit)
 		Name:SetShadowColor(0, 0, 0)
 		Name:SetShadowOffset(1.25, -1.25)
 		
-		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namelong]')
+		self:Tag(Name, '[Tukui:getnamecolor][Tukui:nameshort]')
 		self.Name = Name
 		
 		-- create debuff for arena units
@@ -1189,13 +1188,15 @@ local function Shared(self, unit)
 		
 		castbar.time = T.SetFontString(castbar,font, 10, "THINOUTLINE")
 		castbar.time:Point("RIGHT", castbar, "RIGHT", -4, 0)
-		castbar.time:SetTextColor(1, 1, 1)
+		castbar.time:SetTextColor(0, 4, 0)
 		castbar.time:SetJustifyH("RIGHT")
 		castbar.CustomTimeText = T.CustomCastTimeText
 
 		castbar.Text = T.SetFontString(castbar,font, 10, "THINOUTLINE")
 		castbar.Text:SetPoint("LEFT", castbar, "LEFT", 4, 0)
-		castbar.Text:SetTextColor(1, 1, 1)
+		castbar.Text:SetTextColor(0.3, 0.2, 1)
+		castbar.Text:Width(100)
+		castbar.Text:Height(12)
 		
 		castbar.CustomDelayText = T.CustomCastDelayText
 		castbar.PostCastStart = T.CheckCast
@@ -1317,7 +1318,7 @@ local function Shared(self, unit)
 		Name:SetShadowColor(0, 0, 0)
 		Name:SetShadowOffset(1.25, -1.25)
 		
-		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namelong]')
+		self:Tag(Name, '[Tukui:getnamecolor][Tukui:nameshort]')
 		self.Name = Name
 		
 		-- create debuff for arena units
@@ -1353,13 +1354,15 @@ local function Shared(self, unit)
 		
 		castbar.time = T.SetFontString(castbar,font, 10, "THINOUTLINE")
 		castbar.time:Point("RIGHT", castbar, "RIGHT", -4, 0)
-		castbar.time:SetTextColor(1, 1, 1)
+		castbar.time:SetTextColor(0, 4, 0)
 		castbar.time:SetJustifyH("RIGHT")
 		castbar.CustomTimeText = T.CustomCastTimeText
 
 		castbar.Text = T.SetFontString(castbar,font, 10, "THINOUTLINE")
 		castbar.Text:Point("LEFT", castbar, "LEFT", 4, 0)
-		castbar.Text:SetTextColor(1, 1, 1)
+		castbar.Text:SetTextColor(0.3, 0.2, 1)
+		castbar.Text:Width(100)
+		castbar.Text:Height(12)
 		
 		castbar.CustomDelayText = T.CustomCastDelayText
 		castbar.PostCastStart = T.CheckCast
@@ -1578,13 +1581,15 @@ local function Shared(self, unit)
 		
 		castbar.time = T.SetFontString(castbar,font, 10, "THINOUTLINE")
 		castbar.time:Point("RIGHT", castbar, "RIGHT", -4, 0)
-		castbar.time:SetTextColor(1, 1, 1)
+		castbar.time:SetTextColor(0, 4, 0)
 		castbar.time:SetJustifyH("RIGHT")
 		castbar.CustomTimeText = T.CustomCastTimeText
 
 		castbar.Text = T.SetFontString(castbar,font, 10, "THINOUTLINE")
 		castbar.Text:Point("LEFT", castbar, "LEFT", 4, 0)
-		castbar.Text:SetTextColor(1, 1, 1)
+		castbar.Text:SetTextColor(0.3, 0.2, 1)
+		castbar.Text:Width(100)
+		castbar.Text:Height(12)
 		
 		castbar.CustomDelayText = T.CustomCastDelayText
 		castbar.PostCastStart = T.CheckCast
